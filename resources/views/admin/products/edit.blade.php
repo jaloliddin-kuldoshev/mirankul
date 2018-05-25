@@ -29,7 +29,7 @@
 							<select class="form-control cateAjax" name="works_id" required>
 								<option value="" selected="selected" disabled>Выберите Направление</option>
 								@foreach($news  as $cat)
-									<option data-id="{{ $cat->id }}" data-url="/getCatalog" value="{{ $cat->id }}" @if($cat->id == $new->works_id) selected @endif>{{ $cat->title }}</option>
+								<option data-id="{{ $cat->id }}" data-url="/getCatalog" value="{{ $cat->id }}" @if($cat->id == $new->works_id) selected @endif>{{ $cat->title }}</option>
 								@endforeach
 							</select>
 							@if($errors->has('works_id'))
@@ -43,7 +43,7 @@
 							<select class="form-control catAjax" name="catalogs_id" required>
 								<option value="" selected="selected" disabled>Выберите Каталог</option>
 								@foreach ($cats as $element)
-									<option  value="{{ $element->id }}" @if ($element->id == $new->catalogs_id) selected @endif >{{ $element->title }}</option>
+								<option  value="{{ $element->id }}" @if ($element->id == $new->catalogs_id) selected @endif >{{ $element->title }}</option>
 								@endforeach
 							</select>
 						</div>
@@ -68,7 +68,7 @@
 						@foreach ($prop as $element)
 						<div class="box-body increment">
 							<div class="row">
-								<input type="text"  name="ids[]" value="{{ $element->id }}">
+								<input type="hidden"  name="ids[]" value="{{ $element->id }}">
 								<div class="col-xs-6">
 									<label for="exampleInputEmail1">Название</label>
 									<input type="text" class="form-control" placeholder="" name="title1[]" value="{{ $element->title }}">
@@ -129,15 +129,27 @@
 
 						@endif
 					</div>
+					@foreach (json_decode($new->img) as $key => $area)
+					<div class="form-group">
+						<label for="exampleInputEmail1">Иконка</label>
+						<input type="file" class="dropify" name="img[{{  $key }}]" data-default-file="{{ asset($area) }}">
+						<input type="hidden" name="accessImg[{{$key}}]" class="accessImg" value="0">
+						@if($errors->has('img'))
+
+						<small class="text-danger">{{ $errors->first('img') }}</small>
+
+						@endif
+					</div>
+					@endforeach
 					<div class="input-group control-group rasm" >
-						<input type="file" name="img[]" class="form-control" multiple>
+						<input type="file" name="imgNew[]" class="form-control" multiple>
 						<div class="input-group-btn"> 
 							<button class="btn btn-success addImg" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
 						</div>
 					</div>
 					<div class="clones hide">
 						<div class="control-group input-group rasim" style="margin-top:10px">
-							<input type="file" name="img[]" class="form-control">
+							<input type="file" name="imgNew[]" class="form-control">
 							<div class="input-group-btn"> 
 								<button class="btn btn-danger removeImg" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
 							</div>

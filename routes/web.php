@@ -11,9 +11,21 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@index');
+Route::get('contacts', 'IndexController@contacts');
+Route::get('vacancy', 'IndexController@vacancy');
+Route::get('company', 'IndexController@company');
+Route::get('alboums/{id}', 'IndexController@alboums');
+Route::get('images/{id}', 'IndexController@photos');
+Route::get('branches/{id}', 'IndexController@branches');
+Route::get('products/{id}', 'IndexController@products');
+Route::get('service', 'IndexController@service');
+Route::get('gallery', 'IndexController@gallery');
+Route::get('getCart', 'IndexController@getCart');
+Route::get('del-item', 'IndexController@del');
+Route::get('minus', 'IndexController@minus');
+Route::get('cart', 'IndexController@cart');
+
 
 Route::group([
 	'prefix' => 'admin-panel',
@@ -27,6 +39,7 @@ Route::group([
 	Route::resource('benefits', 'BenefitsController');
 	Route::resource('alboums', 'AlboumsController');
 	Route::resource('photos', 'PhotoController');
+	Route::get('getAlboum/{id?}', 'PhotoController@getAlboum');
 	Route::resource('partners', 'PartnersController');
 	Route::resource('offices', 'OfficesController');
 	Route::resource('vacancies', 'VacanciesController');

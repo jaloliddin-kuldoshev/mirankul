@@ -72,6 +72,15 @@
 							@endif
 						</div>
 						<div class="form-group">
+							<label for="exampleInputEmail1">Картинка на главной странице</label>
+							<input type="file" class="dropify" name="img_main" data-default-file="{{ asset($news->img_main) }}">
+							@if($errors->has('img_main'))
+
+							<small class="text-danger">{{ $errors->first('img_main') }}</small>
+
+							@endif
+						</div>
+						<div class="form-group">
 							<label for="exampleInputEmail1">Иконка символ</label>
 							<input type="file" class="dropify" name="sym" data-default-file="{{ asset($news->sym) }}">
 						</div>
@@ -138,7 +147,7 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Доб.</label>
+							<label for="exampleInputEmail1">Телеграм username</label>
 							<input type="text" class="form-control" name="ex" value="{{ $news->ex }}">
 							@if($errors->has('ex'))
 
@@ -165,6 +174,21 @@
 							@endif
 						</div>
 					</fieldset>
+					<div class="form-group">
+						<label>Показать на главной странице</label>
+						<select name="size" class="form-control">
+							<option value="1" <?php if ($news['size'] == 1) echo ' selected="selected"'; ?>>Маленький блок</option>
+							<option value="2" <?php if ($news['size'] == 2) echo ' selected="selected"'; ?>>2 в 1 горизонтальный блок</option>
+							<option value="3" <?php if ($news['size'] == 3) echo ' selected="selected"'; ?>>2 в 1 вертикальный блок</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Показать на главной странице</label>
+						<select name="status" class="form-control">
+							<option value="1" <?php if ($news['status'] == 1) echo ' selected="selected"'; ?>>Отображается</option>
+							<option value="0" <?php if ($news['status'] == 0) echo ' selected="selected"'; ?>>Скрыт</option>
+						</select>
+					</div>
 				</div>
 				<!-- /.box-body -->
 

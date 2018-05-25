@@ -8,6 +8,7 @@ use App\Model\Alboums;
 use Illuminate\Http\Request;
 use Image;
 use App\Model\Photo;
+use App\Model\Works;
 
 
 class PhotoController extends Controller
@@ -42,8 +43,15 @@ class PhotoController extends Controller
     public function create()
     {
         //
-        $news = Alboums::all();
+        $news = Works::all();
         return view('admin.photos.create', ['news' => $news]);
+    }
+    public function getAlboum($id)
+    {
+        $prod = Alboums::where([
+            ['works_id', '=', $id]
+        ])->get();
+        return response()->view('admin.photos.getAlboum', ['prod' => $prod]);
     }
 
     /**
@@ -94,10 +102,12 @@ class PhotoController extends Controller
      */
     public function edit($id)
     {
-        //
-        $news = Alboums::all();
+        $work = Works::all();
         $new = Photo::find($id);
-        return view('admin.photos.edit', ['news' => $news, 'new' => $new]);
+        $news = Alboums::where([
+            ['works_id', '=', $new->works_id]
+        ])->get();
+        return view('admin.photos.edit', ['news' => $news, 'new' => $new, 'work' => $work]);
     }
 
     /**
@@ -128,8 +138,10 @@ class PhotoController extends Controller
         }else {
             $obj->img = Photo::find($id)->img;
         }
-        if (isset($input['alboums_id']) && count($input['alboums_id']) > 0) {
+        if (isset($input['works_id']) && count($input['works_id']) > 0) {
             $obj->alboums_id = $input['alboums_id'];
+            $obj->works_id = $input['works_id'];
+
         }   
         
 

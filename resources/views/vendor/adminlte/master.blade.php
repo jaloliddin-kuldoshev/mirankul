@@ -153,8 +153,21 @@
             $('.catAjax').html(res);
         });
       });
-  </script>
-  @yield('adminlte_js')
+        $(document).on('change', '.alAjax', function() {
+          var id = $(this).val();
+          var url = $(this).data('url');
+          $.get('/admin-panel/getAlboum/' + id, function(res) {
+            $('.catAjax').html(res);
+        });
+      });
+        $(document).on('change', '.dropify', function(){
+            if ($(this).val()) {
+                console.log('1');
+                $(this).parent().siblings('.accessImg').val('1');
+            }
+        });
+    </script>
+    @yield('adminlte_js')
 
 </body>
 </html>

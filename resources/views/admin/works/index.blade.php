@@ -7,7 +7,7 @@
 
 	<div class="col-md-12">
 
-		<div class="alert alert-success-outline alert-dismissible fade in" role="alert">
+		<div class="alert alert-success-outline alert-success alert-dismissible fade in" role="alert">
 
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 
@@ -26,10 +26,6 @@
 <h1>
 	Направления
 </h1>
-<ol class="breadcrumb">
-	<li><a href="/home"><i class="fa fa-dashboard"></i> Home</a></li>
-	<li class="active">Направления</li>
-</ol>
 @stop
 @section('content')
 

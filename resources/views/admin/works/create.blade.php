@@ -69,6 +69,15 @@
 							@endif
 						</div>
 						<div class="form-group">
+							<label for="exampleInputEmail1">Картинка на главной странице</label>
+							<input type="file" class="dropify" name="img_main" value="">
+							@if($errors->has('img_main'))
+
+							<small class="text-danger">{{ $errors->first('img_main') }}</small>
+
+							@endif
+						</div>
+						<div class="form-group">
 							<label for="exampleInputEmail1">Иконка символ</label>
 							<input type="file" class="dropify" name="sym" value="">
 						</div>
@@ -135,7 +144,7 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Доб.</label>
+							<label for="exampleInputEmail1">Телеграм username</label>
 							<input type="text" class="form-control" name="ex" value="">
 							@if($errors->has('ex'))
 
@@ -162,6 +171,22 @@
 							@endif
 						</div>
 					</fieldset>
+					<div class="form-group">
+					    <label>Размер блока на главной странице</label>
+					    <select class="form-control"  name="size">
+					        <option value="1" selected="selected">Маленький блок</option>
+					        <option value="2">2 в 1 горизонтальный блок</option>
+					        <option value="3">2 в 1 вертикальный блок</option>
+					    </select>
+					</div>
+					<div class="form-group">
+					    <label>Показать на главной странице</label>
+					    <select class="form-control"  name="status">
+					        <option value="1" selected="selected">Отображается</option>
+					        <option value="0">Скрыт</option>
+					    </select>
+					</div>
+
 				</div>
 				<!-- /.box-body -->
 

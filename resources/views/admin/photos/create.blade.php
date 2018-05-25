@@ -23,17 +23,25 @@
 				<div class="box-body">
 					<div class="form-group">
 						<label>Направление</label>
-						<select class="form-control" name="alboums_id">
-							<option value="" selected="selected" disabled>Выберите Альбом</option>
+
+						<select class="form-control alAjax" name="works_id" required>
+							<option value="" selected="selected" disabled>Выберите Направление</option>
 							@foreach($news  as $cat)
-							<option value="{{ $cat->id }}">{{ $cat->title }}</option>
+							<option data-id="{{ $cat->id }}" value="{{ $cat->id }}">{{ $cat->title }}</option>
 							@endforeach
 						</select>
-						@if($errors->has('alboums_id'))
 
-						<small class="text-danger">{{ $errors->first('alboums_id') }}</small>
+						@if($errors->has('works_id'))
+
+						<small class="text-danger">{{ $errors->first('works_id') }}</small>
 
 						@endif
+					</div>
+					<div class="form-group">
+						<label>Альбом</label>
+						<select class="form-control catAjax" name="alboums_id" required>
+							<option value="" selected="selected" disabled>Выберите Альбом</option>
+						</select>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Фотка</label>

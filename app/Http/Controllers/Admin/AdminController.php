@@ -140,7 +140,7 @@ class AdminController extends Controller
 
 				$obj->file = $dir . $image->getClientOriginalName();
 			}else{
-				$obj->file = Contacts::find($id)->file;
+				$obj->file = Contacts::find($input['id'])->file;
 			}
 			$obj->text = $input['text'];
 			$obj->telegram = $input['telegram'];
@@ -235,6 +235,21 @@ class AdminController extends Controller
 			$input = $request->all();
 
 			$obj = Text::find($input['id']);
+			if ($request->hasFile('img')){
+
+				$image = $request->file('img');
+
+				$file = Image::make($image);
+
+				$dir = '/site/photo/vacancy/';
+
+				$file->save(public_path() . $dir . $image->hashName());
+
+				$obj->img = $dir . $image->hashName();
+			}else{
+
+				$obj->img = Text::find($input['id'])->img;
+			}
 			
 			$obj->text = $input['text'];
 

@@ -138,6 +138,12 @@ class ProductsController extends Controller
             ['works_id', '=', $new->works_id]
         ])->get();
 
+        // foreach (json_decode($new->img) as $area =>  $value) {
+        //     echo "<pre>";
+        //     print_r($area); 
+        //     echo "</pre>"; 
+        // }
+        // die();
 
         return view('admin.products.edit', ['news' => $news, 'new' => $new, 'prop' => $prop, 'cats' => $cat]);
     }
@@ -153,23 +159,72 @@ class ProductsController extends Controller
     {
         //
         $input = $request->all();
+        $obj = Products::find($id);
         if (isset($input)) {
-            for ($i=0; $i < count($input->request('title1')); $i++) { 
-                if (isset($input->request('ids')[$i])) {
-                    $old = Properties::find($input->request('ids')[$i]);
-                    $old->title = $input->request('title1')[$i];
-                    $old->value = $input->request('value')[$i];
-                    $old->save();
-                }else{
-                    $newPro = new Properties();
-                    $newPro->title = $input->request('title1')[$i];
-                    $newPro->value = $input->request('value')[$i];
-                    $newPro->save();
+            for ($i=0; $i < count($input['title1']); $i++) { 
+                if (!empty($input['title1'][$i])) {
+                    if (isset($request->input('ids')[$i])) {
+                        $old = Properties::find($request->input('ids')[$i]);
+                        $old->title = $input['title1'][$i];
+                        $old->value = $input['value'][$i];
+                        $old->products_id =$id;
+                        $old->save();
+                    }else{
+                        $newPro = new Properties();
+                        $newPro->title = $input['title1'][$i];
+                        $newPro->value = $input['value'][$i];
+                        $newPro->products_id =$id;
+                        $newPro->save();
+                    }
+                }
+                
+            }
+            
+            $obj->title = $input['title'];
+            $obj->works_id = $input['works_id'];
+            $obj->catalogs_id = $input['catalogs_id'];
+            $obj->price = $input['price'];
+            $obj->text = $input['text'];
+            $obj->text1 = $input['text1'];
+            $oldImage = json_decode($obj->img);
+            $k=0;
+            $image = $request->file('img');
+
+            $test_image = [];
+            if ($request->hasfile('img')) {
+                foreach ($request->file('img') as $key => $value) {
+                    $name = 'products' . '-' . time() . '.' . $value->getClientOriginalName();
+                    $dir = '/site/photo/products/';
+                    $destination_path = public_path('/site/photo/products/');
+                    $value->move($destination_path, $name);
+                    $test_image[] = $dir . $name; 
                 }
             }
-        }
+            if ($request->hasfile('img')){
+                foreach ($input['accessImg'] as $key => $value) {
+                    if ($value == 1) {
+                        $oldImage[$key] = $test_image[$k];
+                        $k++;
+                    }
+                }
+            }
+            if ($request->hasfile('imgNew')) {
+                foreach ($request->file('imgNew') as $key => $value) {
+                    $name = 'products' . '-' . time() . '.' . $value->getClientOriginalName();
+                    $dir = '/site/photo/products/';
+                    $destination_path = public_path('/site/photo/products/');
+                    $value->move($destination_path, $name);
+                    $oldImage[] = $dir . $name; 
+                }
+            }
 
-    }
+    $obj->img = json_encode($oldImage);
+    $obj->save();
+
+}
+return redirect()->route('products.index')->with('success', 'Успешно добавлень');
+
+}
 
     /**
      * Remove the specified resource from storage.
@@ -177,9 +232,15 @@ class ProductsController extends Controller
      * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy($id)
     {
         //
+        $data = Products::find($id);
+
+        if ($data->delete()){
+
+            return redirect()->route('products.index')->with('message', 'Успешно удален');
+        }
     }
 
 }

@@ -111,7 +111,7 @@ return [
         'Главная Навигация',
         [
             'text'        => 'Слайдер',
-            'url'         => 'admin/pages',
+            'url'         => 'admin-panel/sliders',
             'icon'        => 'file',
         ],
 

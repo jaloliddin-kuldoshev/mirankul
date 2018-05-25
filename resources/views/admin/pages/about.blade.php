@@ -2,7 +2,7 @@
  @section('title', 'Mirankul')
  @section('content_header')
  <h1>
- 	 О нас
+ 	О нас
  </h1>
  @stop
  @section('content')
@@ -24,6 +24,10 @@
  					<div class="form-group">
  						<label for="exampleInputEmail1">Текст</label>
  						<textarea class="form-control ckeditor" name="text" rows="3" id="">{{ $news->text }}</textarea>
+ 					</div>
+ 					<div class="form-group">
+ 						<label for="exampleInputEmail1">Баннер</label>
+ 						<input type="file" class="dropify" name="img" data-default-file="{{ asset($news->img) }}">
  					</div>
  					<input type="hidden" name="id" value="{{ $news->id }}">
  				</div>

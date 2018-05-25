@@ -24,11 +24,11 @@
 				{{ method_field('put') }}
 				<div class="box-body">
 					<div class="form-group">
-						<label>Альбом</label>
-						<select class="form-control" name="alboums_id">
+						<label>Направление</label>
+						<select class="form-control alAjax" name="works_id">
 							<option value="" selected="selected" disabled>Выберите Направление</option>
-							@foreach($news  as $cat)
-							<option value="{{ $cat->id }}" @if($cat->id == $new->alboums_id) selected @endif>{{ $cat->title }}</option>
+							@foreach($work  as $cat)
+							<option data-id="{{ $cat->id }}" value="{{ $cat->id }}" @if($cat->id == $new->works_id) selected @endif>{{ $cat->title }}</option>
 							@endforeach
 						</select>
 						@if($errors->has('works_id'))
@@ -37,6 +37,15 @@
 
 						@endif
 					</div>
+					<div class="form-group">
+							<label>Альбом</label>
+							<select class="form-control catAjax" name="alboums_id">
+								<option value="" selected="selected" disabled>Выберите Альбом</option>
+								@foreach ($news as $element)
+								<option  value="{{ $element->id }}" @if ($element->id == $new->alboums_id) selected @endif >{{ $element->title }}</option>
+								@endforeach
+							</select>
+						</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Иконка</label>
 						<input type="file" class="dropify" name="img" data-default-file="{{ asset($new->img) }}">

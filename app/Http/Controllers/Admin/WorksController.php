@@ -60,6 +60,7 @@ class WorksController extends Controller
             'des' => 'required|max:255|string',
             'icon' => 'required|mimes:jpeg,bmp,png',
             'img' => 'required|mimes:jpeg,bmp,png',
+            'img_main' => 'required|mimes:jpeg,bmp,png',
             'sym' => 'required|mimes:jpeg,bmp,png',
             'email' => 'required|email',
             'tel' => 'required',
@@ -70,6 +71,8 @@ class WorksController extends Controller
             'mob' => 'required',
             'ex' => 'required',
             'file' => 'required',
+            'size' => 'required',
+            'status' => 'required',
         ]);
         if ($validator->fails()){
 
@@ -98,6 +101,18 @@ class WorksController extends Controller
             $file->save(public_path() . $dir . $image->hashName());
 
             $input['icon'] = $dir . $image->hashName();
+        }
+        if ($request->hasFile('img_main')){
+
+            $image = $request->file('img_main');
+
+            $file = Image::make($image);
+
+            $dir = '/site/photo/works/';
+
+            $file->save(public_path() . $dir . $image->hashName());
+
+            $input['img_main'] = $dir . $image->hashName();
         }
         if ($request->hasFile('sym')){
 
@@ -179,9 +194,10 @@ class WorksController extends Controller
             'title' => 'required|max:255|string',
             'motto' => 'required|max:255|string',
             'des' => 'required|max:255|string',
-            'icon' => 'required|mimes:jpeg,bmp,png',
-            'img' => 'required|mimes:jpeg,bmp,png',
-            'sym' => 'required|mimes:jpeg,bmp,png',
+            'icon' => 'mimes:jpeg,bmp,png',
+            'img' => 'mimes:jpeg,bmp,png',
+            'img_main' => 'mimes:jpeg,bmp,png',
+            'sym' => 'mimes:jpeg,bmp,png',
             'email' => 'required|email',
             'tel' => 'required',
             'text' => 'required',
@@ -190,7 +206,8 @@ class WorksController extends Controller
             'contact' => 'required',
             'mob' => 'required',
             'ex' => 'required',
-            'file' => 'required',
+            'size' => 'required',
+            'status' => 'required',
         ]);
         if ($validator->fails()){
 
@@ -209,6 +226,20 @@ class WorksController extends Controller
             $obj->img = $dir . $image->hashName();
         }else{
             $obj->img = Works::find($id)->img;
+        }
+        if ($request->hasFile('img_main')){
+
+            $image = $request->file('img_main');
+
+            $file = Image::make($image);
+
+            $dir = '/site/photo/works/';
+
+            $file->save(public_path() . $dir . $image->hashName());
+
+            $obj->img_main = $dir . $image->hashName();
+        }else{
+            $obj->img_main = Works::find($id)->img_main;
         }
         if ($request->hasFile('icon')){
 
@@ -265,6 +296,8 @@ class WorksController extends Controller
         $obj->tel = $input['tel'];
         $obj->ex = $input['ex'];
         $obj->email = $input['email'];
+        $obj->size = $input['size'];
+        $obj->status = $input['status'];
         
         if ($obj->save()){
 

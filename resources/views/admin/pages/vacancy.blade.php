@@ -33,6 +33,10 @@
  						<label for="exampleInputEmail1">Баннер</label>
  						<input type="file" class="dropify" name="img" data-default-file="{{ asset($news->img) }}">
  					</div>
+ 					<div class="form-group">
+ 						<label for="exampleInputEmail1">Резюме</label>
+ 						<input type="file" class="dropify" name="cv" data-default-file="{{ asset($news->cv) }}">
+ 					</div>
  					<input type="hidden" name="id" value="{{ $news->id }}">
  				</div>
  				<!-- /.box-body -->

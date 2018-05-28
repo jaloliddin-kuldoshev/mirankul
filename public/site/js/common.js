@@ -482,9 +482,9 @@ $(document).on('click', '.catablinks', function(){
 });
 $(document).ready(function(){
  $(document).on('click','#btn-more',function(){
-   var id = $(this).data('id');
-   var products_id = $(this).data('products_id');
-   $("#btn-more").html("Загружется....");
+   var id = $(this).attr('data-id');
+   var products_id = $(this).attr('data-products_id');
+   $("#btn-more").html("Загружается....");
    $.ajax({
     url : '/loadDataAjax',
     method : "GET",
@@ -494,12 +494,16 @@ $(document).ready(function(){
     {
       if(data != '') 
       {
-        $('#remove-row').remove();
-        $('#'+id+1).append(data);
+        //$('#remove-row').remove();
+        //$('#'+id+1).append(data);
+        $('#'+id+1).append(JSON.parse(data).content);
+        $('#btn-more').attr("data-products_id", JSON.parse(data).product_id)
+        $("#btn-more").html("Больше продукции");
       }
       else
       {
-        $('#btn-more').html("No Data");
+        $('#btn-more').html("Нет данных");
+        $('#remove-row').remove();
       }
     }
   });

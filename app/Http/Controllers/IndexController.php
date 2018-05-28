@@ -97,7 +97,7 @@ class IndexController extends Controller
 		$works = Works::find($id)->ben;
 		$vid = Videos::where('works_id', $id)->get();
 		$cat = Catalogs::where('works_id', $id)->get();
-		$pro = Products::where('works_id', $id)->orderBy('id','DESC')->limit(2)->get();
+		$pro = Products::where('works_id', $id)->orderBy('id','DESC')->limit(9)->get();
 		$pho = Alboums::where('works_id', $id)->get();
 		return view('site.branch', [
 			'work' => $work,
@@ -115,7 +115,7 @@ class IndexController extends Controller
 		$id = $request->id;
 		$products_id = $request->products_id;
 		$posts = Products::where([['id','<',$products_id],['catalogs_id', $id]])->orderBy('id','DESC')->limit(2)->get();
-		//$posts = Products::where('id','>',$id)->orderBy('id','ASC')->limit(2)->get();
+		//$posts = Products::where('id','<',$id)->orderBy('id','DESC')->limit(2)->get();
 		if(!$posts->isEmpty())
 		{
 			foreach($posts as $post)
@@ -141,13 +141,13 @@ class IndexController extends Controller
 					</div>';
 			}
 
-			$output .= '<div class="button_see_more">
-			<button class="products_lochin" id="btn-more" data-id="$id">
-			Больше продукции
-			</button>
-			</div>';
-
-			echo $output;
+			// $output .= '<div class="button_see_more">
+			// <button class="products_lochin" id="btn-more" data-id="'.$post->id.'">
+			// Больше продукции
+			// </button>
+			// </div>';
+			//echo $output;
+			return response()->json(['content' => $output, 'product_id' => $post->id]);
 		}
 
 

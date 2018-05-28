@@ -39,14 +39,14 @@
 		<div class="panelv1">
 			<div class="panel-od">
 				{!! $element->text !!}
-				<p>Образец резюме для заполнения - <a href="#">Скачать</a></p>
+				<p>Образец резюме для заполнения - <a href="{{ $text->cv }}">Скачать</a></p>
 			</div>
 		</div>
 		@endforeach
 		<!-- botton texts -->
 		<div class="botacar-text">
 			{!! $text->text1 !!}
-			<p class="botacar-text-p3">Образец резюме для заполнения - <a href="#">Скачать</a></p>
+			<p class="botacar-text-p3">Образец резюме для заполнения - <a href="{{ $text->cv }}">Скачать</a></p>
 		</div>
 	</div>
 </section>

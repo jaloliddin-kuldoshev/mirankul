@@ -214,6 +214,23 @@ class AdminController extends Controller
 
 				$obj->img = Text::find($input['id'])->img;
 			}
+			if ($request->hasFile('cv')){
+
+				$image = $request->file('cv');
+
+				$name = $image->getClientOriginalExtension();
+
+				$dir = '/site/photo/vacancy/';
+
+				$destinationPath = public_path('/site/photo/vacancy/');
+
+				$image->move($destinationPath,$image->getClientOriginalName());
+
+				$obj->cv = $dir . $image->getClientOriginalName();
+			}else{
+
+				$obj->cv = Text::find($input['id'])->cv;
+			}
 			$obj->text = $input['text'];
 			$obj->text1 = $input['text1'];
 			if ($obj->save()){

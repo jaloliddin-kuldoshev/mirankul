@@ -80,7 +80,7 @@ class PhotoController extends Controller
             $projectImages->save();
         }
 
-        return redirect()->route('photos.index')->with('success', 'Успешно добавлень');
+        return redirect()->route('photos.index')->with('success', 'Успешно добавлено');
     }
 
     /**
@@ -147,7 +147,7 @@ class PhotoController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('photos.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('photos.index')->with('message', 'Успешно обновлено');
         }
 
     }
@@ -165,7 +165,7 @@ class PhotoController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('photos.index')->with('message', 'Успешно удален');
+            return redirect()->route('photos.index')->with('message', 'Успешно удалено');
         }
     }
 }

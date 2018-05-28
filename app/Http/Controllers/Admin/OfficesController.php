@@ -75,7 +75,7 @@ class OfficesController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('offices.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('offices.index')->with('message', 'Успешно добавлено');
         }
     }
 
@@ -142,7 +142,7 @@ class OfficesController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('offices.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('offices.index')->with('message', 'Успешно обновлено');
         }
 
     }
@@ -160,7 +160,7 @@ class OfficesController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('offices.index')->with('message', 'Успешно удален');
+            return redirect()->route('offices.index')->with('message', 'Успешно удалено');
         }
     }
 }

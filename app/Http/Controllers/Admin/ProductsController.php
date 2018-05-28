@@ -106,7 +106,7 @@ class ProductsController extends Controller
         }
 
 
-        return redirect()->route('products.index')->with('success', 'Успешно добавлень');
+        return redirect()->route('products.index')->with('success', 'Успешно добавлено');
     }
 
     /**
@@ -222,7 +222,7 @@ class ProductsController extends Controller
     $obj->save();
 
 }
-return redirect()->route('products.index')->with('success', 'Успешно добавлень');
+return redirect()->route('products.index')->with('success', 'Успешно обновлено');
 
 }
 
@@ -239,7 +239,7 @@ return redirect()->route('products.index')->with('success', 'Успешно до
 
         if ($data->delete()){
 
-            return redirect()->route('products.index')->with('message', 'Успешно удален');
+            return redirect()->route('products.index')->with('message', 'Успешно удалено');
         }
     }
 

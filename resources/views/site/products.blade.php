@@ -44,7 +44,7 @@
 							@foreach (json_decode($work->img) as $key => $element)
 							
 							<a  href="{{$element}}">
-								<div style="background-image: url({{$element}});" data-src="{{$element}}" class="containerimg-last {{ ($key == 0 ? 'activeimg_gal' : '') }} activeimg_gal">
+								<div style="background-image: url({{$element}});" data-src="{{$element}}" class="containerimg-last {{ ($key == 0 ? 'activeimg_gal' : '') }} ">
 								</div>
 							</a>                     
 							@endforeach

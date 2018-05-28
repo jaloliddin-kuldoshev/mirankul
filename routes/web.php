@@ -25,6 +25,7 @@ Route::get('getCart', 'IndexController@getCart');
 Route::get('del-item', 'IndexController@del');
 Route::get('minus', 'IndexController@minus');
 Route::get('cart', 'IndexController@cart');
+Route::get('loadDataAjax', 'IndexController@loadDataAjax');
 
 
 Route::group([

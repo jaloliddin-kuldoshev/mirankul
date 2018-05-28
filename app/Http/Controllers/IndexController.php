@@ -94,20 +94,63 @@ class IndexController extends Controller
 	public function branches($id)
 	{
 		$work = Works::find($id);
+		$works = Works::find($id)->ben;
 		$vid = Videos::where('works_id', $id)->get();
-		$ben = Benefits::where('works_id', $id)->get();
 		$cat = Catalogs::where('works_id', $id)->get();
-		$pro = Products::where('works_id', $id)->get();
-		$pho = Photo::where('works_id', $id)->get();
+		$pro = Products::where('works_id', $id)->orderBy('id','DESC')->limit(2)->get();
+		$pho = Alboums::where('works_id', $id)->get();
 		return view('site.branch', [
 			'work' => $work,
+			'works' => $works,
 			'vid' => $vid,
-			'ben' => $ben,
 			'cat' => $cat,
 			'pro' => $pro,
 			'pho' => $pho,
 
 		]);
+	}
+	public function loadDataAjax(Request $request)
+	{
+		$output = '';
+		$id = $request->id;
+		$products_id = $request->products_id;
+		$posts = Products::where([['id','<',$products_id],['catalogs_id', $id]])->orderBy('id','DESC')->limit(2)->get();
+		//$posts = Products::where('id','>',$id)->orderBy('id','ASC')->limit(2)->get();
+		if(!$posts->isEmpty())
+		{
+			foreach($posts as $post)
+			{
+				$url = url('products/'.$post->id);
+				$output .= 
+				'<div class="caLondon_1-div">
+						<div class="cicontainer">
+							<img src="'. json_decode($post->img)[0] .'"  class="ciimage">
+							<h6>'. $post->title .'</h6>
+							<p>'.$post->price.' сум</p>
+							<div class="cioverlay">
+								<div class="citext">
+									<div class="citext-a">
+										<input type="hidden" name="cart" value="1" id="cart">
+										<input type="hidden" name="id" value="'.$post->id.'">
+										<a href="'.$url.'">Подробнее</a>
+										<a href="" class="add-to-cart" data-id="'.$post->id.'">В корзину</a>
+									</div>
+								</div>
+							</div>	
+						</div>
+					</div>';
+			}
+
+			$output .= '<div class="button_see_more">
+			<button class="products_lochin" id="btn-more" data-id="$id">
+			Больше продукции
+			</button>
+			</div>';
+
+			echo $output;
+		}
+
+
 	}
 	public function products($id)
 	{

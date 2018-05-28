@@ -25,7 +25,7 @@
 
 				<div class="box-body">
 					<div class="form-group">
-						<label for="exampleInputEmail1">Название</label>
+						<label for="exampleInputEmail1">Название направления</label>
 						<input type="text" class="form-control" name="title" value="{{ $news->title }}">
 						@if($errors->has('title'))
 
@@ -34,7 +34,7 @@
 						@endif
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Мотто</label>
+						<label for="exampleInputEmail1">Заголовок слайдера</label>
 						<input type="text" class="form-control" name="motto" value="{{ $news->motto }}">
 						@if($errors->has('motto'))
 
@@ -52,7 +52,7 @@
 						@endif
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Иконка</label>
+						<label for="exampleInputEmail1">Иконка направления</label>
 						<input type="file" class="dropify" name="icon" data-default-file="{{ asset($news->icon) }}">
 						@if($errors->has('icon'))
 

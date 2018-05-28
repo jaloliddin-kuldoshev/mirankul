@@ -17,7 +17,7 @@ class Works extends Model
 	}
 	public function ben()
 	{
-		return $this->hasMany('App\Model\Benefits', 'works_id');
+		return $this->hasOne('App\Model\Benefits', 'works_id');
 	}
 	public function alb()
 	{

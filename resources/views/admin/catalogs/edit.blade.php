@@ -38,7 +38,7 @@
 						@endif
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Название</label>
+						<label for="exampleInputEmail1">Категория продукции</label>
 						<input type="text" class="form-control" name="title" value="{{ $new->title }}">
 						@if($errors->has('title'))
 

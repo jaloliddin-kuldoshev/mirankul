@@ -74,7 +74,7 @@ class CatalogsController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('catalogs.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('catalogs.index')->with('message', 'Успешно добавлено');
         }
     }
 
@@ -130,7 +130,7 @@ class CatalogsController extends Controller
         $obj->works_id = $input['works_id'];
         if ($obj->save()){
 
-            return redirect()->route('catalogs.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('catalogs.index')->with('message', 'Успешно обновлено');
         }
 
     }
@@ -148,7 +148,7 @@ class CatalogsController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('catalogs.index')->with('message', 'Успешно удален');
+            return redirect()->route('catalogs.index')->with('message', 'Успешно удалено');
         }
     }
 }

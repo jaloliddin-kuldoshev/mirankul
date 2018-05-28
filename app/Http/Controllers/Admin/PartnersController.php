@@ -78,7 +78,7 @@ class PartnersController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('partners.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('partners.index')->with('message', 'Успешно добавлено');
         }
     }
 
@@ -145,7 +145,7 @@ class PartnersController extends Controller
         
         if ($obj->save()){
 
-            return redirect()->route('partners.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('partners.index')->with('message', 'Успешно обновлено');
         }
     }
 
@@ -162,7 +162,7 @@ class PartnersController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('partners.index')->with('message', 'Успешно удален');
+            return redirect()->route('partners.index')->with('message', 'Успешно удалено');
         }
     }
 }

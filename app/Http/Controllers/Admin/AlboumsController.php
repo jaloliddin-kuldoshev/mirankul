@@ -82,7 +82,7 @@ class AlboumsController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('alboums.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('alboums.index')->with('message', 'Успешно добавлено');
         }
     }
 
@@ -156,7 +156,7 @@ class AlboumsController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('alboums.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('alboums.index')->with('message', 'Успешно обновлено');
         }
     }
 
@@ -173,7 +173,7 @@ class AlboumsController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('alboums.index')->with('message', 'Успешно удален');
+            return redirect()->route('alboums.index')->with('message', 'Успешно удалено');
         }
     }
 }

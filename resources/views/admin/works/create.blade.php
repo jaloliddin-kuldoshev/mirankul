@@ -22,9 +22,9 @@
 				{{ csrf_field() }}
 				<div class="box-body">
 					<fieldset class="form-group">
-						<legend >Информация про направления</legend>
+						<legend >Информация о направлении</legend>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Название</label>
+							<label for="exampleInputEmail1">Название направления</label>
 							<input type="text" class="form-control" name="title" value="">
 							@if($errors->has('title'))
 
@@ -33,7 +33,7 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Мотто</label>
+							<label for="exampleInputEmail1">Заголовок баннера</label>
 							<input type="text" class="form-control" name="motto" value="">
 							@if($errors->has('motto'))
 
@@ -51,7 +51,7 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Иконка</label>
+							<label for="exampleInputEmail1">Иконка направления</label>
 							<input type="file" class="dropify" name="icon" value="">
 							@if($errors->has('icon'))
 
@@ -78,7 +78,7 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Иконка символ</label>
+							<label for="exampleInputEmail1">Логотип напрвления</label>
 							<input type="file" class="dropify" name="sym" value="">
 						</div>
 						@if($errors->has('sym'))
@@ -87,7 +87,7 @@
 
 							@endif
 						<div class="form-group">
-							<label for="exampleInputEmail1">Описание</label>
+							<label for="exampleInputEmail1">Описание направления</label>
 							<textarea class="form-control ckeditor" name="text" rows="3" id=""></textarea>
 							@if($errors->has('text'))
 
@@ -96,7 +96,7 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label for="exampleInputEmail1">Символ текст</label>
+							<label for="exampleInputEmail1">Название компании</label>
 							<input type="text" class="form-control" name="tit" value="">
 							@if($errors->has('tit'))
 

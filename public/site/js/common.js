@@ -473,4 +473,35 @@ $(document).on('click', '.del-item', function () {
         });
 
 });
+$(window).on('load', function(){
+  $('.products_lochin').attr('data-id', $('.catablinks').eq(0).attr('data-id')); 
+});
 
+$(document).on('click', '.catablinks', function(){
+  $('.products_lochin').attr('data-id', $(this).attr('data-id')); 
+});
+$(document).ready(function(){
+ $(document).on('click','#btn-more',function(){
+   var id = $(this).data('id');
+   var products_id = $(this).data('products_id');
+   $("#btn-more").html("Загружется....");
+   $.ajax({
+    url : '/loadDataAjax',
+    method : "GET",
+    data : {id:id, products_id:products_id},
+    dataType : "text",
+    success : function (data)
+    {
+      if(data != '') 
+      {
+        $('#remove-row').remove();
+        $('#'+id+1).append(data);
+      }
+      else
+      {
+        $('#btn-more').html("No Data");
+      }
+    }
+  });
+ });  
+}); 

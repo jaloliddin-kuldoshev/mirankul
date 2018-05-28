@@ -152,7 +152,7 @@ class VideoController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('video.index')->with('message', 'Успешно удален');
+            return redirect()->route('video.index')->with('message', 'Успешно удалено');
         }
     }
 }

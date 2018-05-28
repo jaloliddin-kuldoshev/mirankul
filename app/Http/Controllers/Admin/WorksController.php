@@ -147,7 +147,7 @@ class WorksController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('works.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('works.index')->with('message', 'Успешно добавлено');
         }
 
     }
@@ -301,7 +301,7 @@ class WorksController extends Controller
         
         if ($obj->save()){
 
-            return redirect()->route('works.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('works.index')->with('message', 'Успешно обновлено');
         }
     }
 
@@ -318,7 +318,7 @@ class WorksController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('works.index')->with('message', 'Успешно удален');
+            return redirect()->route('works.index')->with('message', 'Успешно удалено');
         }
     }
 }

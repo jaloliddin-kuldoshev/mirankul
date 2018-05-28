@@ -7,7 +7,7 @@
 
 	<div class="col-md-12">
 
-		<div class="alert alert-success-outline alert-dismissible fade in" role="alert">
+		<div class="alert alert-success-outline alert-success alert-dismissible fade in" role="alert">
 
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 

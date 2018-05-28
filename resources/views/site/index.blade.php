@@ -24,7 +24,7 @@
 					<img src="{{$work[$i]->sym}}">
 					<div class="solutions-h6-pa">
 						<h6>{{$work[$i]->title}}</h6>
-						<p>{{$work[$i]->motto}}</p>
+						<p>{{$work[$i]->des}}</p>
 						<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 						<img src="{{$work[$i]->sym}}">
 						<div class="solutions-h6-pa">
 							<h6>{{$work[$i]->title}}</h6>
-							<p>{{$work[$i]->motto}}</p>
+							<p>{{$work[$i]->des}}</p>
 							<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 						</div>
 					</div>
@@ -67,7 +67,7 @@
 						<img src="{{$work[$i]->sym}}">
 						<div class="solutions-h6-pa">
 							<h6>{{$work[$i]->title}}</h6>
-							<p>{{$work[$i]->motto}}</p>
+							<p>{{$work[$i]->des}}</p>
 							<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 						</div>
 					</div>
@@ -83,7 +83,7 @@
 					<img src="{{$work[$i]->sym}}">
 					<div class="solutions-h6-pa">
 						<h6>{{$work[$i]->title}}</h6>
-						<p>{{$work[$i]->motto}}</p>
+						<p>{{$work[$i]->des}}</p>
 						<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 					</div>
 				</div>
@@ -100,7 +100,7 @@
 						<img src="{{$work[$i]->sym}}">
 						<div class="solutions-h6-pa">
 							<h6>{{$work[$i]->title}}</h6>
-							<p>{{$work[$i]->motto}}</p>
+							<p>{{$work[$i]->des}}</p>
 							<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 						</div>
 					</div>
@@ -124,7 +124,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -144,7 +144,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -162,7 +162,7 @@
 						<img src="{{$work[$i]->sym}}">
 						<div class="solutions-h6-pa">
 							<h6>{{$work[$i]->title}}</h6>
-							<p>{{$work[$i]->motto}}</p>
+							<p>{{$work[$i]->des}}</p>
 							<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 						</div>
 					</div>
@@ -187,7 +187,7 @@
 								<img src="{{$work[$i]->sym}}">
 								<div class="solutions-h6-pa">
 									<h6>{{$work[$i]->title}}</h6>
-									<p>{{$work[$i]->motto}}</p>
+									<p>{{$work[$i]->des}}</p>
 									<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 								</div>
 							</div>
@@ -204,7 +204,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -224,7 +224,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -242,7 +242,7 @@
 						<img src="{{$work[$i]->sym}}">
 						<div class="solutions-h6-pa">
 							<h6>{{$work[$i]->title}}</h6>
-							<p>{{$work[$i]->motto}}</p>
+							<p>{{$work[$i]->des}}</p>
 							<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 						</div>
 					</div>
@@ -266,7 +266,7 @@
 								<img src="{{$work[$i]->sym}}">
 								<div class="solutions-h6-pa">
 									<h6>{{$work[$i]->title}}</h6>
-									<p>{{$work[$i]->motto}}</p>
+									<p>{{$work[$i]->des}}</p>
 									<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 								</div>
 							</div>
@@ -283,7 +283,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -303,7 +303,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -329,7 +329,7 @@
 						<img src="{{$work[$i]->sym}}">
 						<div class="solutions-h6-pa">
 							<h6>{{$work[$i]->title}}</h6>
-							<p>{{$work[$i]->motto}}</p>
+							<p>{{$work[$i]->des}}</p>
 							<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 						</div>
 					</div>
@@ -353,7 +353,7 @@
 								<img src="{{$work[$i]->sym}}">
 								<div class="solutions-h6-pa">
 									<h6>{{$work[$i]->title}}</h6>
-									<p>{{$work[$i]->motto}}</p>
+									<p>{{$work[$i]->des}}</p>
 									<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 								</div>
 							</div>
@@ -370,7 +370,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -390,7 +390,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -417,7 +417,7 @@
 							<img src="{{$work[$i]->sym}}">
 							<div class="solutions-h6-pa">
 								<h6>{{$work[$i]->title}}</h6>
-								<p>{{$work[$i]->motto}}</p>
+								<p>{{$work[$i]->des}}</p>
 								<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 							</div>
 						</div>
@@ -433,7 +433,7 @@
 						<img src="{{$work[$i]->sym}}">
 						<div class="solutions-h6-pa">
 							<h6>{{$work[$i]->title}}</h6>
-							<p>{{$work[$i]->motto}}</p>
+							<p>{{$work[$i]->des}}</p>
 							<a href="{{ action('IndexController@branches', ['id' => $work[$i]->id]) }}">Подробнее</a>
 						</div>
 					</div>

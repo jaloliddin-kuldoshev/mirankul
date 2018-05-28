@@ -157,26 +157,24 @@
 <div class="footer-2-div">
 
   <h6>Навигация</h6>
-  <a href="#">Главная</a>
+  <a href="{{ action('IndexController@index') }}">Главная</a>
   <a href="#">Преимущества</a>
-  <a href="#">О нас</a>
+  <a href="{{ action('IndexController@company') }}/?type=3">О нас</a>
 
 </div>
 <div class="footer-3-div">
   <h6>Услуги</h6>
-  <a href="#">Сендвич панели</a>
-  <a href="#">Лотки</a>
-  <a href="#">Металлоконструкции</a>
-  <a href="#">Вентел</a>
-  <a href="#">Строительные услуги</a>
+  @foreach (\App\Model\Works::all()->take(5) as $element)
+  <a href="{{ action('IndexController@branches', ['id' => $element->id]) }}">{{$element->title}}</a>
+  @endforeach
 </div>                
 </div>
 
 <div class="footerall-2div">
   <div class="footer-4-div">
     <button id="all-ininaa" href="#">Оставить заявку</button> 
-    <a href="#">Вакансии</a>
-    <a href="#">Контакты</a>
+    <a href="{{ action('IndexController@vacancy') }}">Вакансии</a>
+    <a href="{{ action('IndexController@contacts') }}">Контакты</a>
   </div>
   <div class="footer-5-div">
     <h6>Мы в соц. сетях:</h6>

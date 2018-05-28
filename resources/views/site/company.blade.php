@@ -91,15 +91,13 @@
 								<div class="career-reddiv1"></div>
 								<p class="career-reddiv1-1_p"></p>
 								<div class="galer_albom_tab">
-									<h4>Альбомы</h4>
-
 									<div class="albom-3div_in1"> 
 										@foreach ($work as $key => $element)
 										<a href="{{ action('IndexController@alboums', ['id' => $element->id]) }}">
 											<div class="albom_tab_divbac" style="background-image: url({{$element->img_main}});">
 												<div class="albom_tab_divbac-p">
 													<h6>{{$element->title}}</h6>
-													<p> фото</p>
+													<p>{{count($element->alb)}} @if (5 <= count($element->alb) && 20 >= count($element->alb)) альбомов @else альбома @endif</p>
 												</div>
 											</div>
 										</a>

@@ -24,7 +24,7 @@
 			</li>
 			<li><a href="{{$work->ex}}"><img class="right-fix-imgte" src="{{asset('site/img/call2.png')}}"></a></li>
 			<li>
-					<a href="{{$work->file}}"><img src="{{asset('site/img/call3.png')}}"></a>
+				<a href="{{$work->file}}"><img src="{{asset('site/img/call3.png')}}"></a>
 			</li>
 		</ul>
 	</div>
@@ -67,21 +67,41 @@
 			<div class="container">
 
 				<div class="advantages-h1-p emn">
-					<h6>MIRONKUL GROUP</h6>
+					<h6>{{ $work->tit }}</h6>
 					<h1>Наши преимущества</h1>
+					<p>{{$works->des}}</p>
 				</div>
 
 				<div class="advantages-4div">
 					<div class="advantages-4div-2">
-						@foreach ($ben as $element)
-						<div class="advantages-1-div">
-							<img src="{{ $element->img }}">
-							<h5>{{ $element->title }}</h5>
-							<p>{{ $element->text }}</p>
-						</div>
-						@endforeach	     
 
-					</div>     
+						<div class="advantages-1-div">
+							<img src="{{$works->img}}">
+							<h5>{{$works->title}}</h5>
+							<p>{{$works->text}}</p>
+						</div>
+						<div class="advantages-1-div">
+							<img src="{{$works->img1}}">
+							<h5>{{$works->title1}}</h5>
+							<p>{{$works->text1}}</p>
+						</div>      
+
+					</div>
+
+					<div class="advantages-4div-2">
+
+						<div class="advantages-1-div">
+							<img src="{{$works->img2}}">
+							<h5>{{$works->title2}}</h5>
+							<p>{{$works->text2}}</p>
+						</div>
+						<div class="advantages-1-div advantages-1-div-last ">
+							<img src="{{$works->img3}}">
+							<h5>{{$works->title3}}</h5>
+							<p>{{$works->text3}}</p>
+						</div>      
+
+					</div>      
 
 				</div>
 			</div>
@@ -98,15 +118,17 @@
 				<div class="catalog-tabs">
 					<div class="catab">
 						<h2>Каталог</h2>
-						@foreach ($cat as $element)
-						<button class="catablinks" onclick="openCity(event, '{{ $element->id }}')" id="cadefaultOpen">{{ $element->title }}</button>
+						@foreach ($cat as $key => $element)
+						<button class="catablinks {{ ($key == 0 ? 'caactive' : '') }}" data-id="{{ $element->id }}" onclick="openCity(event, '{{ $element->id }}')" id="cadefaultOpen">{{ $element->title }}</button>
 						@endforeach
 					</div>
 					<!-- London Соединители для лотков -->
-					@foreach ($cat as $element)
-					<div id="{{ $element->id }}" class="catabcontent">
-						@foreach ($pro as $element)
-						<div class="caLondon-3div">
+					@foreach ($cat as $key => $asd)
+					<div id="{{ $asd->id }}" class="catabcontent" style="{{ ($key == 0 ? 'display: block;' : 'display: none;') }}">
+						<div id="{{ $asd->id }}1" class="caLondon-3div">
+							@foreach ($pro as $element)
+							@if ($asd->id == $element->catalogs_id)
+
 							<div class="caLondon_1-div">
 								<div class="cicontainer">
 									@for ($i = 0; $i < 1; $i++)
@@ -124,21 +146,24 @@
 											</div>
 										</div>
 									</div>
-									
 								</div>
 							</div>
-						</div>   
-						@endforeach
+
+							@endif
+							@endforeach
+						</div>
 					</div>
 					@endforeach
 
 				</div>
 				<!-- more button -->
-				<div class="button_see_more">
-					<button>
+
+				<div class="button_see_more" id="remove-row">
+					<button class="products_lochin" id="btn-more" data-id="" data-products_id="{{ $element->id}}">
 						Больше продукции
 					</button>
 				</div>
+
 			</div>
 		</section>
 
@@ -149,7 +174,7 @@
 					<h6>MIRONKUL CABLE TRAYS</h6>
 					<h1>Портфолио работ</h1>
 				</div>
-				<div class="last_pop_slixck">
+				{{-- <div class="last_pop_slixck">
 					@foreach ($pho as $element)
 					<a href="{{$element->img}}" data-lightbox="mygallery">
 						<div style="background-image: url({{$element->img}});" class="containerimg-last">
@@ -163,6 +188,19 @@
 						</div>
 					</a>
 					@endforeach          
+				</div> --}}
+				<div class="albom-3div_in1"> 
+					@foreach ($pho as $key => $element)
+					<a href="{{ action('IndexController@photos', ['id' => $element->id]) }}">
+						<div class="albom_tab_divbac" style="background-image: url({{$element->img}});">
+							<div class="albom_tab_divbac-p">
+								<h6>{{$element->title}}</h6>
+								<p>{{ count($element->photo)}} фото</p>
+							</div>
+						</div>
+					</a>
+					@endforeach
+
 				</div>
 			</div>
 		</section>

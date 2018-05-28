@@ -68,7 +68,7 @@ class VacanciesController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('vacancies.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('vacancies.index')->with('message', 'Успешно добавлено');
         }
     }
 
@@ -124,7 +124,7 @@ class VacanciesController extends Controller
 
     if ($obj->save()){
 
-        return redirect()->route('vacancies.index')->with('message', 'Успешно добавлень');
+        return redirect()->route('vacancies.index')->with('message', 'Успешно обновлено');
     }
 }
 
@@ -141,7 +141,7 @@ class VacanciesController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('vacancies.index')->with('message', 'Успешно удален');
+            return redirect()->route('vacancies.index')->with('message', 'Успешно удалено');
             
         }
     }

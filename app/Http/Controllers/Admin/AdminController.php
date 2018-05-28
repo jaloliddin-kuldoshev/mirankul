@@ -94,7 +94,7 @@ class AdminController extends Controller
 			$obj->des3 = $input['des3'];
 			if ($obj->save()){
 
-				return back()->with('message', 'Успешно обновлень');
+				return back()->with('message', 'Успешно обновлено');
 			}
 
 		}else{
@@ -147,7 +147,7 @@ class AdminController extends Controller
 			$obj->face = $input['face'];
 			if ($obj->save()){
 
-				return back()->with('message', 'Успешно обновлень');
+				return back()->with('message', 'Успешно обновлено');
 			}
 
 		}else{
@@ -182,7 +182,7 @@ class AdminController extends Controller
 			$obj->text = $input['text'];
 			if ($obj->save()){
 
-				return back()->with('message', 'Успешно обновлень');
+				return back()->with('message', 'Успешно обновлено');
 			}
 
 		}else{
@@ -218,7 +218,7 @@ class AdminController extends Controller
 			$obj->text1 = $input['text1'];
 			if ($obj->save()){
 
-				return back()->with('message', 'Успешно обновлень');
+				return back()->with('message', 'Успешно обновлено');
 			}
 
 		}else{
@@ -255,7 +255,7 @@ class AdminController extends Controller
 
 			if ($obj->save()){
 
-				return back()->with('message', 'Успешно обновлень');
+				return back()->with('message', 'Успешно обновлено');
 			}
 
 		}else{

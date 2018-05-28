@@ -92,7 +92,7 @@ class SlidersController extends Controller
 
         if ($obj->save()){
 
-            return redirect()->route('sliders.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('sliders.index')->with('message', 'Успешно добавлено');
         }
     }
 
@@ -180,7 +180,7 @@ class SlidersController extends Controller
         
         if ($obj->save()){
 
-            return redirect()->route('sliders.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('sliders.index')->with('message', 'Успешно обновлено');
         }
     }
 
@@ -197,7 +197,7 @@ class SlidersController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('sliders.index')->with('message', 'Успешно удален');
+            return redirect()->route('sliders.index')->with('message', 'Успешно удалено');
         }
     }
 }

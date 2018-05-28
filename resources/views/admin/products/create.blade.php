@@ -37,14 +37,14 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label>Каталог</label>
+							<label>Категория продукции</label>
 							<select class="form-control catAjax" name="catalogs_id" required>
 								<option value="" selected="selected" disabled>Выберите Каталог</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Название</label>
+						<label for="exampleInputEmail1">Название продукта</label>
 						<input type="text" class="form-control" name="title" value="">
 						@if($errors->has('title'))
 
@@ -62,12 +62,12 @@
 						<div class="box-body increment">
 							<div class="row">
 								<div class="col-xs-6">
-									<label for="exampleInputEmail1">Название</label>
+									<label for="exampleInputEmail1">Параметр</label>
 									<input type="text" class="form-control" placeholder="" name="title1[]">
 								</div>
 
 								<div class="col-xs-6">
-									<label for="exampleInputEmail1">Название1</label>
+									<label for="exampleInputEmail1">Значение</label>
 									<input type="text" class="form-control" placeholder="" name="value[]">
 								</div>
 							</div>
@@ -77,12 +77,12 @@
 							<div class="box-body remove">
 								<div class="row">
 									<div class="col-xs-6">
-										<label for="exampleInputEmail1">Название</label>
+										<label for="exampleInputEmail1">Параметр</label>
 										<input type="text" class="form-control" placeholder="" name="title1[]">
 									</div>
 
 									<div class="col-xs-6">
-										<label for="exampleInputEmail1">Название</label>
+										<label for="exampleInputEmail1">Значение</label>
 										<input type="text" class="form-control" placeholder="" name="value[]">
 									</div>
 								</div>
@@ -103,7 +103,7 @@
 						@endif
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Описание</label>
+						<label for="exampleInputEmail1">Инструкция</label>
 						<textarea class="form-control ckeditor" name="text" rows="3" id=""></textarea>
 						@if($errors->has('text'))
 
@@ -112,7 +112,7 @@
 						@endif
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Доп. Описание</label>
+						<label for="exampleInputEmail1">Дополнительная Информация</label>
 						<textarea class="form-control ckeditor" name="text1" rows="3" id=""></textarea>
 						@if($errors->has('text1'))
 

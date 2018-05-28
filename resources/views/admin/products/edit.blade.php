@@ -39,7 +39,7 @@
 							@endif
 						</div>
 						<div class="form-group">
-							<label>Каталог</label>
+							<label>Категория продукции</label>
 							<select class="form-control catAjax" name="catalogs_id" required>
 								<option value="" selected="selected" disabled>Выберите Каталог</option>
 								@foreach ($cats as $element)
@@ -50,7 +50,7 @@
 					</div>
 
 					<div class="form-group">
-						<label for="exampleInputEmail1">Название</label>
+						<label for="exampleInputEmail1">Название продукта</label>
 						<input type="text" class="form-control" name="title" value="{{ $new->title }}">
 						@if($errors->has('title'))
 
@@ -70,12 +70,12 @@
 							<div class="row">
 								<input type="hidden"  name="ids[]" value="{{ $element->id }}">
 								<div class="col-xs-6">
-									<label for="exampleInputEmail1">Название</label>
+									<label for="exampleInputEmail1">Параметр</label>
 									<input type="text" class="form-control" placeholder="" name="title1[]" value="{{ $element->title }}">
 								</div>
 
 								<div class="col-xs-6">
-									<label for="exampleInputEmail1">Название1</label>
+									<label for="exampleInputEmail1">Значение</label>
 									<input type="text" class="form-control" placeholder="" name="value[]" value="{{ $element->value }}">
 								</div>
 							</div>
@@ -86,12 +86,12 @@
 							<div class="box-body remove">
 								<div class="row">
 									<div class="col-xs-6">
-										<label for="exampleInputEmail1">Название</label>
+										<label for="exampleInputEmail1">Параметр</label>
 										<input type="text" class="form-control" placeholder=""  name="title1[]">
 									</div>
 
 									<div class="col-xs-6">
-										<label for="exampleInputEmail1">Название</label>
+										<label for="exampleInputEmail1">Значение</label>
 										<input type="text" class="form-control" placeholder="" name="value[]">
 									</div>
 								</div>
@@ -112,7 +112,7 @@
 						@endif
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Описание</label>
+						<label for="exampleInputEmail1">Инструкция</label>
 						<textarea class="form-control ckeditor" name="text" rows="3" id="">{{ $new->text }}</textarea>
 						@if($errors->has('text'))
 
@@ -121,7 +121,7 @@
 						@endif
 					</div>
 					<div class="form-group">
-						<label for="exampleInputEmail1">Доп. Описание</label>
+						<label for="exampleInputEmail1">Дополнительная Информация</label>
 						<textarea class="form-control ckeditor" name="text1" rows="3" id="">{{ $new->text1 }}</textarea>
 						@if($errors->has('text1'))
 
@@ -131,7 +131,7 @@
 					</div>
 					@foreach (json_decode($new->img) as $key => $area)
 					<div class="form-group">
-						<label for="exampleInputEmail1">Иконка</label>
+						<label for="exampleInputEmail1">Изоброжение</label>
 						<input type="file" class="dropify" name="img[{{  $key }}]" data-default-file="{{ asset($area) }}">
 						<input type="hidden" name="accessImg[{{$key}}]" class="accessImg" value="0">
 						@if($errors->has('img'))

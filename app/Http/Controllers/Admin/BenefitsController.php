@@ -59,6 +59,16 @@ class BenefitsController extends Controller
             'works_id' => 'required',
             'text' => 'required',
             'img' => 'required|mimes:jpeg,bmp,png',
+            'des' => 'required',
+            'title1' => 'required|max:255|string',
+            'text1' => 'required',
+            'img1' => 'required|mimes:jpeg,bmp,png',
+            'title2' => 'required|max:255|string',
+            'text2' => 'required',
+            'img2' => 'required|mimes:jpeg,bmp,png',
+            'title3' => 'required|max:255|string',
+            'text3' => 'required',
+            'img3' => 'required|mimes:jpeg,bmp,png',
             
         ]);
         if ($validator->fails()){
@@ -77,13 +87,49 @@ class BenefitsController extends Controller
 
             $input['img'] = $dir . $image->hashName();
         }
+        if ($request->hasFile('img1')){
+
+            $image = $request->file('img1');
+
+            $file = Image::make($image);
+
+            $dir = '/site/photo/benefits/';
+
+            $file->save(public_path() . $dir . $image->hashName());
+
+            $input['img1'] = $dir . $image->hashName();
+        }
+        if ($request->hasFile('img2')){
+
+            $image = $request->file('img2');
+
+            $file = Image::make($image);
+
+            $dir = '/site/photo/benefits/';
+
+            $file->save(public_path() . $dir . $image->hashName());
+
+            $input['img2'] = $dir . $image->hashName();
+        }
+        if ($request->hasFile('img3')){
+
+            $image = $request->file('img3');
+
+            $file = Image::make($image);
+
+            $dir = '/site/photo/benefits/';
+
+            $file->save(public_path() . $dir . $image->hashName());
+
+            $input['img3'] = $dir . $image->hashName();
+        }
         $obj = new Benefits();
 
         $obj->fill($input);
 
         if ($obj->save()){
 
-            return redirect()->route('benefits.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('benefits.index')->with('message', 'Успешно добавлено');
         }
     }
 
@@ -129,8 +175,18 @@ class BenefitsController extends Controller
         $validator = Validator::make($input, [
             'title' => 'required|max:255|string',
             'works_id' => 'required',
+            'des' => 'required',
             'text' => 'required',
-            'img' => 'required|mimes:jpeg,bmp,png',
+            'img' => 'mimes:jpeg,bmp,png',
+            'title1' => 'required|max:255|string',
+            'text1' => 'required',
+            'img1' => 'mimes:jpeg,bmp,png',
+            'title2' => 'required|max:255|string',
+            'text2' => 'required',
+            'img2' => 'mimes:jpeg,bmp,png',
+            'title3' => 'required|max:255|string',
+            'text3' => 'required',
+            'img3' => 'mimes:jpeg,bmp,png',
             
         ]);
         if ($validator->fails()){
@@ -151,13 +207,62 @@ class BenefitsController extends Controller
         }else {
             $obj->img = Benefits::find($id)->img;
         }
+        if ($request->hasFile('img1')){
+
+            $image = $request->file('img1');
+
+            $file = Image::make($image);
+
+            $dir = '/site/photo/benefits/';
+
+            $file->save(public_path() . $dir . $image->hashName());
+
+            $obj->img1 = $dir . $image->hashName();
+        }else {
+            $obj->img1 = Benefits::find($id)->img1;
+        }
+        if ($request->hasFile('img2')){
+
+            $image = $request->file('img2');
+
+            $file = Image::make($image);
+
+            $dir = '/site/photo/benefits/';
+
+            $file->save(public_path() . $dir . $image->hashName());
+
+            $obj->img2 = $dir . $image->hashName();
+        }else {
+            $obj->img2 = Benefits::find($id)->img2;
+        }
+        if ($request->hasFile('img3')){
+
+            $image = $request->file('img3');
+
+            $file = Image::make($image);
+
+            $dir = '/site/photo/benefits/';
+
+            $file->save(public_path() . $dir . $image->hashName());
+
+            $obj->img3 = $dir . $image->hashName();
+        }else {
+            $obj->img3 = Benefits::find($id)->img3;
+        }
+        $obj->des = $input['des'];
         $obj->title = $input['title'];
-        $obj->text = $input['text'];
+        $obj->text = $input['text']; 
+        $obj->title1 = $input['title1'];
+        $obj->text1 = $input['text1'];
+        $obj->title2 = $input['title2'];
+        $obj->text2 = $input['text2']; 
+        $obj->title3 = $input['title3'];
+        $obj->text3 = $input['text3']; 
         $obj->works_id = $input['works_id'];
 
         if ($obj->save()){
 
-            return redirect()->route('benefits.index')->with('message', 'Успешно добавлень');
+            return redirect()->route('benefits.index')->with('message', 'Успешно обновлено');
         }
     }
 
@@ -174,7 +279,7 @@ class BenefitsController extends Controller
 
         if ($data->delete()){
 
-            return redirect()->route('benefits.index')->with('message', 'Успешно удален');
+            return redirect()->route('benefits.index')->with('message', 'Успешно удалено');
             
         }
     }

@@ -77,6 +77,7 @@ class ProductsController extends Controller
         $form= new Products();
         $form->title = $request->input('title');
         $form->price = $request->input('price');
+        $form->weight = $request->input('weight');
         $form->text = $request->input('text');
         $form->text1 = $request->input('text1');
         $form->works_id = $request->input('works_id');
@@ -184,6 +185,7 @@ class ProductsController extends Controller
             $obj->works_id = $input['works_id'];
             $obj->catalogs_id = $input['catalogs_id'];
             $obj->price = $input['price'];
+            $obj->weight = $input['weight'];            
             $obj->text = $input['text'];
             $obj->text1 = $input['text1'];
             $oldImage = json_decode($obj->img);

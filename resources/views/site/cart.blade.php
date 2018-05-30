@@ -102,5 +102,24 @@
 		</div>
 		<a class="bascet_abot" href="{{ action('IndexController@index') }}"><span><i class="fa fa-angle-double-left" aria-hidden="true"></i></span> Назад в каталог</a>
 	</div>
+	<input type="hidden" id="change-message-url" data-url="{{ action('IndexController@sendExcel') }}">
+	<script src="http://mirankul/public/site/js/jquery.min.js" ></script>
+
+	<script type="text/javascript">
+		function changeStatusMessage() {
+			var url = $('#change-message-url').data('url');
+			$.ajax({
+				type: 'get',
+				url: url,
+				success: function (res) {
+					$('#excelFile').val(res);
+				},
+				error: function (error) {
+            //alert(error);
+          }
+        });
+		}
+		setTimeout(changeStatusMessage, 2000);
+	</script>
 </section>
 @endsection

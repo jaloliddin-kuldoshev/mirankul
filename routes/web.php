@@ -26,6 +26,11 @@ Route::get('del-item', 'IndexController@del');
 Route::get('minus', 'IndexController@minus');
 Route::get('cart', 'IndexController@cart');
 Route::get('loadDataAjax', 'IndexController@loadDataAjax');
+Route::get('sent','IndexController@sent');
+Route::post('sent','IndexController@sent');
+Route::get('send','IndexController@send');
+Route::post('send','IndexController@send');
+Route::get('sendExcel','IndexController@sendExcel');
 
 
 Route::group([

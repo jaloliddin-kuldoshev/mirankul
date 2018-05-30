@@ -40,12 +40,13 @@
 		<div class="con-left-right">
 			<div class="contants-leftp">
 				<h5>Свяжитесь с нами</h5>
-				<form>
+				<form action="{{ action('IndexController@send') }}" method="post" enctype="multipart/form-data">
+					{{ csrf_field() }}
 					<div class="contants-leftp_p1">
 						<p>Тема обращения  <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
 					</div>
 					<div class="contants-leftp-select">
-						<select>
+						<select name="topic">
 							<option disabled selected val="">Выберите тему...</option>
 							<option value="saab">tema 1</option>
 							<option value="mercedes">tema 2</option>
@@ -58,40 +59,40 @@
 						<div class="contants-left-name1">
 							<div class="contants-left-name1im" >
 								<p>Имя  <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-								<input type="text" name="">
+								<input type="text" name="name">
 							</div>
 							<div class="contants-left-name1im" >
 								<p>Фамилия  <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-								<input type="text" name="">
+								<input type="text" name="sname">
 							</div>          
 						</div>
 						<div class="contants-left-name1">
 							<div class="contants-left-name1im" >
 								<p>Компания <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-								<input type="text" name="">
+								<input type="text" name="comp">
 							</div>
 							<div class="contants-left-name1im" >
 								<p>Телефон  <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-								<input type="text" name="">
+								<input type="text" name="tel">
 							</div>          
 						</div>         
 
 					</div>
 					<p>Email  <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-					<input type="text" name="">
+					<input type="text" name="email">
 
 					<p>Прикрепить файл <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
 					<div class="down-conform">
 						<input type="text" name="" placeholder="Выберите файл...">
-						<input type="file" id="fileforbot" name="f">
+						<input type="file" id="fileforbot" name="file">
 						<label for="fileforbot">Загрузить</label>
 					</div>
 
 					<p>Ваше сообщения  <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-					<textarea></textarea>
+					<textarea name="mes"></textarea>
 
 					<div class="textarea-butn">
-						<button>Отправить сообщение</button>
+						<button type="submit">Отправить сообщение</button>
 						<p><span><i class="fa fa-star" aria-hidden="true"></i></span> Поля обязательные для заполнения</p>
 					</div>
 				</form>

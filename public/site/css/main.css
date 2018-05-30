@@ -1137,6 +1137,7 @@ footer .footerall-2div .footer-4-div  h6{
 		padding-left: 30px;
 		padding-right: 30px;
 		padding-top: 10px;
+		padding-bottom: 10px;
 		border: 1px solid #888;
 		width: 420px;
 		border-radius: 0;
@@ -1243,6 +1244,10 @@ footer .footerall-2div .footer-4-div  h6{
 		color: #182A44;
 		font-size: 30px;
 		font-family: 'Light';   
+	}
+	.thankyou h4{
+		color: #182A44;
+		font-family: 'Light';
 	}
 	.thankyou button{
 		margin-bottom: 40px;

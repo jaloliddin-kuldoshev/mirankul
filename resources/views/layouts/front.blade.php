@@ -48,12 +48,12 @@
 
           <div class="collapse navbar-collapse " id="myNavbar">
             <ul class="nav navbar-nav my_navbar-nav">      
-              <li><a href="{{ action('IndexController@index') }}" class="my_navbar-nav_a com_header_a active">Главная</a></li>
-              <li><a href="{{ action('IndexController@company') }}/?type=3" class="my_navbar-nav_a com_header_a">О нас</a></li>
-              <li><a href="{{ action('IndexController@company') }}/?type=2" class="my_navbar-nav_a com_header_a">Услуги</a></li>   
-              <li><a href="{{ action('IndexController@company') }}/?type=1" class="my_navbar-nav_a com_header_a">Галерея</a></li>                       
-              <li><a href="{{ action('IndexController@vacancy') }}" class="my_navbar-nav_a com_header_a">Вакансии</a></li>
-              <li><a href="{{ action('IndexController@contacts') }}" class="my_navbar-nav_a com_header_a">Контакты</a></li>
+              <li><a href="{{ action('IndexController@index') }}" class="my_navbar-nav_a com_header_a {{ request()->is('/') ? 'active' : '' }}">Главная</a></li>
+              <li><a href="{{ action('IndexController@company') }}/?type=3" class="my_navbar-nav_a com_header_a {{ request()->is('company?type=3') ? 'active' : '' }}">О нас</a></li>
+              <li><a href="{{ action('IndexController@company') }}/?type=2" class="my_navbar-nav_a com_header_a {{ request()->is('company?type=2') ? 'active' : '' }}">Услуги</a></li>   
+              <li><a href="{{ action('IndexController@company') }}/?type=1" class="my_navbar-nav_a com_header_a {{ request()->is('company?type=1') ? 'active' : '' }}">Галерея</a></li>                       
+              <li><a href="{{ action('IndexController@vacancy') }}" class="my_navbar-nav_a com_header_a {{ request()->is('vacancy') ? 'active' : '' }}">Вакансии</a></li>
+              <li><a href="{{ action('IndexController@contacts') }}" class="my_navbar-nav_a com_header_a {{ request()->is('contacts') ? 'active' : '' }}">Контакты</a></li>
               <li><button class="my_navbar-nav_a chan_header_a chan_header_a1" id="myBtn">Оставить заявку</button></li>
               <li class="bascett_li emty">
                 <a class="my_navbar-nav_a com_header_a bascett" href="{{ action('IndexController@cart') }}">
@@ -226,25 +226,25 @@
       <div class="modal-first-all" id="modal-1ty">
         <h2>Связаться с нами</h2>
         <div class="modal-h2botred"></div>
-        <form>
-
+        <form action="{{ action('IndexController@sent') }}" method="post" id="sendEmail">
+          {!! csrf_field() !!}
           <p>Имя <span><i class="fa fa-star" aria-hidden="true"></i></span> </p>
 
-          <input type="text" name="">
+          <input type="text" name="name" required>
 
           <p>Компания</p>
-          <input type="text" name="">
+          <input type="text" name="comp" required>
 
           <p>Email <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-          <input type="email" name="">
+          <input type="email" name="email" required>
 
           <p>Телефон <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-          <input type="text" name="">
+          <input type="text" name="tel" required>
 
           <p>Ваше сообщения <span><i class="fa fa-star" aria-hidden="true"></i></span></p>
-          <textarea></textarea>
+          <textarea name="mes" type="text" required></textarea>
 
-          <button onclick="tymyFunction()">Отправить сообщение</button>
+          <button type="submit"  >Отправить сообщение</button>
         </form>
         <div class="inportant-formbot">
           <p><span><i class="fa fa-star" aria-hidden="true"></i></span> Поля обязательные для заполнения</p>

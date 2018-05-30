@@ -171,11 +171,16 @@ $('.last_pop_slixck').slick({
 
 // Get the modal
 var modal = document.getElementById('myModal');
+var modala = document.getElementById('modal-1ty');
 
 // Get the button that opens the modal
 // var btn = document.getElementById("myBtn");
 $("#myBtn").click(function(){
   modal.style.display = "block";
+})
+$("#btn").click(function(){
+  modal.style.display = "block";
+  modala.style.display = "none";
 })
 
 // Get the <span> element that closes the modal
@@ -214,11 +219,7 @@ $("#typanel").click(function(){
 
 
 // thank you
-$("#modal-1ty button").click(function(e){
-  e.preventDefault();
-  $("#modal-1ty").css({"display":"none"});
-  $("#typanel").css({"display":"block"});
-})
+
 // function tymyFunction() {
 //     document.getElementById("typanel").style.display = "block";
 //     document.getElementById("modal-1ty").style.display = "none";
@@ -233,6 +234,9 @@ $("#allinone").click(function(){
   $(".my_navbar-nav_a.chan_header_a.chan_header_a1").click();
 })
 
+$("#alli").click(function(){
+  $(".my_navbar-nav_a.chan_header_a.chan_header_a1").click();
+})
 
 $("#all-ininaa").click(function(){
   $(".my_navbar-nav_a.chan_header_a.chan_header_a1").click();
@@ -481,11 +485,12 @@ $(document).on('click', '.catablinks', function(){
   $('.products_lochin').attr('data-id', $(this).attr('data-id')); 
 });
 $(document).ready(function(){
- $(document).on('click','#btn-more',function(){
-   var id = $(this).attr('data-id');
-   var products_id = $(this).attr('data-products_id');
-   $("#btn-more").html("Загружается....");
-   $.ajax({
+ $(document).on('click','.btn-more',function(){
+  var element = $(this);
+  var id = $(this).attr('data-id');
+  var products_id = $(this).attr('data-products_id');
+  element.html("Загружается....");
+  $.ajax({
     url : '/loadDataAjax',
     method : "GET",
     data : {id:id, products_id:products_id},
@@ -497,15 +502,38 @@ $(document).ready(function(){
         //$('#remove-row').remove();
         //$('#'+id+1).append(data);
         $('#'+id+1).append(JSON.parse(data).content);
-        $('#btn-more').attr("data-products_id", JSON.parse(data).product_id)
-        $("#btn-more").html("Больше продукции");
+        element.attr("data-products_id", JSON.parse(data).product_id)
+        element.html("Больше продукции");
       }
       else
       {
-        $('#btn-more').html("Нет данных");
-        $('#remove-row').remove();
+        element.html("Нет данных");
+        // $('#remove-row').remove();
       }
     }
   });
- });  
+});  
 }); 
+$.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+$('#sendEmail').on('submit', function(e){
+
+  e.preventDefault();
+    //serializing form data   
+    var formData = $(this).serialize();
+    var ajaxUrl = $(this).attr('action'); //Getting the url
+
+    $.ajax({
+
+      url: ajaxUrl,
+      data : formData,
+      method : "POST",
+    }).done(function (data){
+      $('#typanel').delay('100').fadeIn("400");
+      $('#modal-1ty').fadeOut('400');
+
+    });
+  });

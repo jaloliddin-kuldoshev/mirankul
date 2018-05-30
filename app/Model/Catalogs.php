@@ -16,6 +16,7 @@ class Catalogs extends Model
 	}
 	public function products()
 	{
-		return $this->hasMany('App\Model\Products', 'catalogs_id');
+
+		return $this->hasMany('App\Model\Products', 'catalogs_id')->orderBy('id', 'DESC');
 	}
 }

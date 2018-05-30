@@ -73,6 +73,7 @@
 							</div>
 
 						</div>
+						<span class="hidded pushing"></span>
 						<div class="clone hide">
 							<div class="box-body remove">
 								<div class="row">
@@ -99,6 +100,15 @@
 						@if($errors->has('price'))
 
 						<small class="text-danger">{{ $errors->first('price') }}</small>
+
+						@endif
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">Вес</label>
+						<input type="text" class="form-control" name="weight" value="">
+						@if($errors->has('weight'))
+
+						<small class="text-danger">{{ $errors->first('weight') }}</small>
 
 						@endif
 					</div>

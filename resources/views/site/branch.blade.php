@@ -18,7 +18,7 @@
 	<div class="affix-ln"  data-spy="affix" data-offset-top="900">
 		<ul>
 			<li>
-				<button>
+				<button id="btn">
 					<div class="ln-fixdiv_right"><img src="{{asset('site/img/call1.png')}}"><span>18</span></div>
 				</button>
 			</li>
@@ -126,9 +126,7 @@
 					@foreach ($cat as $key => $asd)
 					<div id="{{ $asd->id }}" class="catabcontent" style="{{ ($key == 0 ? 'display: block;' : 'display: none;') }}">
 						<div id="{{ $asd->id }}1" class="caLondon-3div">
-							@foreach ($pro as $element)
-							@if ($asd->id == $element->catalogs_id)
-
+							@foreach ($asd->products as $key => $element)
 							<div class="caLondon_1-div">
 								<div class="cicontainer">
 									@for ($i = 0; $i < 1; $i++)
@@ -148,9 +146,15 @@
 									</div>
 								</div>
 							</div>
-
+							@if ($key == 1)
+								@break;
 							@endif
 							@endforeach
+						</div>
+						<div class="button_see_more" >
+							<button class="products_lochin btn-more" id="" data-id="{{ $asd->id }}" data-products_id="{{ $element->id}}">
+								Больше продукции
+							</button>
 						</div>
 					</div>
 					@endforeach
@@ -158,11 +162,7 @@
 				</div>
 				<!-- more button -->
 
-				<div class="button_see_more" id="remove-row">
-					<button class="products_lochin" id="btn-more" data-id="" data-products_id="{{ $element->id}}">
-						Больше продукции
-					</button>
-				</div>
+				
 
 			</div>
 		</section>
@@ -205,4 +205,19 @@
 			</div>
 		</section>
 		@include('site.parts.partners')
+		<div class="my-modal-content1">
+			<div id="myModal" class="modal">
+				<div class="modal-content">
+					<span class="close">&times;</span>
+					<div class="thankyou" id="btn">
+						<h2>Контактное лицо</h2>
+						<div class="modal-h2botred"></div>
+						<h4>Имя: {{$work->contact}}</h4>
+						<h4>Телефон: {{$work->mob}}</h4>
+					</div>
+				</div>
+
+			</div>
+		</div>	
 		@endsection
+		

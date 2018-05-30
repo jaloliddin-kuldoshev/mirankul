@@ -18,7 +18,10 @@ use App\Model\Products;
 use App\Model\Properties;
 use App\Model\Cart;
 use Illuminate\Http\Request;
+use App\Exports\InvoicesExport;
 use Session;
+use Mail;
+use Excel;
 
 class IndexController extends Controller
 {
@@ -96,8 +99,8 @@ class IndexController extends Controller
 		$work = Works::find($id);
 		$works = Works::find($id)->ben;
 		$vid = Videos::where('works_id', $id)->get();
-		$cat = Catalogs::where('works_id', $id)->get();
-		$pro = Products::where('works_id', $id)->orderBy('id','DESC')->limit(9)->get();
+		$cat = Catalogs::where('works_id', $id)->with('products')->get();
+		$pro = Products::where('works_id', $id)->orderBy('id','DESC')->get();
 		$pho = Alboums::where('works_id', $id)->get();
 		return view('site.branch', [
 			'work' => $work,
@@ -123,22 +126,22 @@ class IndexController extends Controller
 				$url = url('products/'.$post->id);
 				$output .= 
 				'<div class="caLondon_1-div">
-						<div class="cicontainer">
-							<img src="'. json_decode($post->img)[0] .'"  class="ciimage">
-							<h6>'. $post->title .'</h6>
-							<p>'.$post->price.' сум</p>
-							<div class="cioverlay">
-								<div class="citext">
-									<div class="citext-a">
-										<input type="hidden" name="cart" value="1" id="cart">
-										<input type="hidden" name="id" value="'.$post->id.'">
-										<a href="'.$url.'">Подробнее</a>
-										<a href="" class="add-to-cart" data-id="'.$post->id.'">В корзину</a>
-									</div>
-								</div>
-							</div>	
-						</div>
-					</div>';
+				<div class="cicontainer">
+				<img src="'. json_decode($post->img)[0] .'"  class="ciimage">
+				<h6>'. $post->title .'</h6>
+				<p>'.$post->price.' сум</p>
+				<div class="cioverlay">
+				<div class="citext">
+				<div class="citext-a">
+				<input type="hidden" name="cart" value="1" id="cart">
+				<input type="hidden" name="id" value="'.$post->id.'">
+				<a href="'.$url.'">Подробнее</a>
+				<a href="" class="add-to-cart" data-id="'.$post->id.'">В корзину</a>
+				</div>
+				</div>
+				</div>	
+				</div>
+				</div>';
 			}
 
 			// $output .= '<div class="button_see_more">
@@ -237,5 +240,76 @@ class IndexController extends Controller
 		
 		$request->session()->forget('cart', $cart); 
 		return redirect()->back();
+	}
+	public function sent(Request $request)
+	{
+		$input = $request->all();
+		$name = $request->input('name');
+		$tel = $request->input('tel');
+		$comp = $request->input('comp');
+		$email = $request->input('email');
+		$mes = $request->input('mes');
+		$excel = $request->input('excel');
+		$data = [
+			'name' => $request->name,
+			'comp' => $request->comp,
+			'email' => $request->email,
+			'tel' => $request->tel,
+			'mes' => $request->mes,
+			'excel' => $request->excel,
+		];
+		Mail::send('email.sent', $data, function ($mail) use($request){
+			$mail->from('site@novatravel.uz', $request->name);
+			$mail->to('parker_gu@mail.ru')->subject('Site message');
+		});
+
+		return 'true';
+	}
+
+	public function send(Request $request)
+	{
+		$input = $request->all();
+		if ($request->hasFile('file')) {
+
+			$image = $request->file('file');
+
+			$dir = '/site/files/';
+
+			$destinationPath = public_path('/site/files/');
+
+			$image->move($destinationPath,$image->getClientOriginalName());
+
+			$input['file'] = $dir . $image->getClientOriginalName();
+		}
+		$topic = $request->input('topic');
+		$name = $request->input('name');
+		$sname = $request->input('sname');
+		$tel = $request->input('tel');
+		$comp = $request->input('comp');
+		$email = $request->input('email');
+		$mes = $request->input('mes');
+		$file = $request->file('file')->getClientOriginalName();
+		$data = [
+			'topic' => $request->topic,
+			'name' => $request->name,
+			'sname' => $request->sname,
+			'comp' => $request->comp,
+			'email' => $request->email,
+			'tel' => $request->tel,
+			'mes' => $request->mes,
+			'file' => $request->file->getClientOriginalName(),
+		];
+		Mail::send('email.send', $data, function ($mail) use($request){
+			$mail->from('site@novatravel.uz', $request->name);
+			$mail->to('parker_gu@mail.ru')->subject('Site message');
+		});
+
+		return back();
+	}
+	public function sendExcel()
+	{
+		$name = 'book_'.time().'.xlsx';
+		Excel::store(new InvoicesExport(),  $name, 'uploads');
+		return $name;
 	}
 }

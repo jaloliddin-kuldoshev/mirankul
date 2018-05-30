@@ -126,7 +126,7 @@
 
           $(".addImg1").click(function(){ 
               var html = $(".clone:last").html();
-              $(".increment:last").after(html);
+              $(".pushing").before(html);
           });
 
           $("body").on("click",".removeImg1",function(){ 
